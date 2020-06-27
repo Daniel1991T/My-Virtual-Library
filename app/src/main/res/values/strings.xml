@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">My Virtual Library</string>
+    <string name="logo_content_description">logo for application</string>
+    <string name="application_name">My Virtual Library</string>
+    <string name="btn_my_profile">My Profile</string>
+    <string name="btn_view_all_books">View All Books</string>
+    <string name="btn_currently_read">Currently Reading Book</string>
+    <string name="btn_want_to_read">Your WishList</string>
+    <string name="btn_all_read_books">All Read Books</string>
+    <string name="btn_favorite_books">See Your Favorites</string>
+    <string name="btn_about">About</string>
+
+    <string name="login_activity_name">Sing Up</string>
+    <string name="login_email">Email</string>
+    <string name="login_to_register">If You Don"t Have An Account! Click Here!</string>
+    <string name="login_button">Login</string>
+    <string name="login_email_valid">Email</string>
+    <string name="login_password_valid">Password</string>
+    <string name="login_username">Username</string>
+
+    <string name="register_email">Email</string>
+    <string name="register_library_name">Library Name</string>
+    <string name="register_password">Password</string>
+    <string name="register_confirm_password">Password Confirm</string>
+    <string name="register_to_login">I already have an account! Click Here!</string>
+    <string name="register_activity_name">Create a New Account</string>
+    <string name="register_warning">Warning</string>
+    <string name="register_button">Register</string>
+
+    <string name="my_profile_username">Username: </string>
+    <string name="my_profile_library_name">Library Name: </string>
+    <string name="my_profile_number_of_all_books">Total Books: </string>
+    <string name="my_profile_default_number"> 0 </string>
+    <string name="my_profile_read_books">Total Read Books: </string>
+    <string name="my_profile_favorite_books">Total Favorite Books: </string>
+
+    <string name="book_btn_currently_reading">Currently Reading</string>
+    <string name="book_btn_want_to_read">Want To Read</string>
+    <string name="book_btn_already_read">Already Read</string>
+    <string name="book_btn_add_to_favorite">Add To Favorite</string>
+    <string name="book_txt_book_name">Book Name: </string>
+    <string name="book_txt_author">Author: </string>
+    <string name="book_txt_pages">Pages: </string>
+    <string name="book_txt_gen">Gen: </string>
+    <string name="book_txt_short_description">Descriptions: </string>
+    <string name="content_description_image_book">Image book</string>
+    <string name="default_name">Name</string>
+    <string name="default_gen">Fantasy</string>
+</resources>
