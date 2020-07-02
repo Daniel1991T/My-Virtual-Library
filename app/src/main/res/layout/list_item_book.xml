@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    app:cardCornerRadius="7dp"
+    android:elevation="7dp"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/collapseRelLayout">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="220dp"
+                android:id="@+id/imgBookItem"
+                android:src="@mipmap/ic_launcher"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_book_name"
+                android:fontFamily="@font/bevan"
+                android:textSize="16sp"
+                android:layout_below="@id/imgBookItem"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="7dp"
+                android:id="@+id/itemTxtBookName"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_down_arrow"
+                android:layout_below="@id/imgBookItem"
+                android:layout_marginTop="7dp"
+                android:id="@+id/itemBtnDownArrow"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/collapseRelLayout"
+            android:id="@+id/expandedRelLayout"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_txt_author"
+                android:fontFamily="@font/bevan"
+                android:id="@+id/itemAuthorTxt"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_name"
+                android:id="@+id/itemEditAuthorTxt"
+                android:layout_below="@id/itemAuthorTxt"
+                android:fontFamily="@font/bevan"/>
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/book_txt_gen"
+                android:id="@+id/itemGenTxt"
+                android:layout_below="@id/itemEditAuthorTxt"
+                android:fontFamily="@font/bevan"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/default_gen"
+                android:id="@+id/itemEditGenTxt"
+                android:fontFamily="@font/bevan"
+                android:layout_below="@id/itemGenTxt"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_up_arrow"
+                android:layout_below="@id/itemEditGenTxt"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/itemBtnUpArrow" />
+
+            <TextView
+                android:id="@+id/txtBookDelete"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemEditGenTxt"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/bevan"
+                android:text="@string/item_book_delete"
+                android:textColor="@color/warningRed" />
+
+            
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

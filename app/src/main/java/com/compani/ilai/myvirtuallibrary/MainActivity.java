@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnMyProfile, btnViewAllBooks, btnCurrentlyReadingBooks, btnWantToReadBooks, btnAllReadBooks,
+    private Button btnMyProfile, btnViewAllBooks, btnCurrentlyReadingBooks, btnWantToReadBooks, btnAlReadBooks,
     btnFavoriteBooks, btnAbout;
 
     @Override
@@ -26,6 +26,54 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnViewAllBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AllBooksActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnWantToReadBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WantToReadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnCurrentlyReadingBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CurrentlyReadingActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAlReadBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AlreadyReadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnFavoriteBooks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FavoriteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initButtons() {
@@ -34,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         btnViewAllBooks = findViewById(R.id.btnViewAllBooks);
         btnCurrentlyReadingBooks = findViewById(R.id.btnCurrentlyRead);
         btnWantToReadBooks = findViewById(R.id.btnWantToRead);
-        btnAllReadBooks = findViewById(R.id.btnAllReadBooks);
+        btnAlReadBooks = findViewById(R.id.btnAllReadBooks);
         btnFavoriteBooks = findViewById(R.id.btnFavorite);
         btnAbout = findViewById(R.id.btnAbout);
     }

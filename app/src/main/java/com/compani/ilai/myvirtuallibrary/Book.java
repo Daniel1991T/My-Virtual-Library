@@ -1,13 +1,14 @@
 package com.compani.ilai.myvirtuallibrary;
 
 public class Book {
-    private int id = 0;
+    private int id;
     private String name;
     private String author;
     private int pages;
     private String gen;
     private String urlImage;
     private String shortDescription;
+    private boolean isExpanded;
 
     public Book(int id, String name, String author, int pages, String gen, String urlImage, String shortDescription) {
         this.id = id;
@@ -17,6 +18,7 @@ public class Book {
         this.gen = gen;
         this.urlImage = urlImage;
         this.shortDescription = shortDescription;
+        this.isExpanded = false;
     }
 
     public int getId() {
@@ -73,5 +75,13 @@ public class Book {
 
     public void setShortDescription(String shortDescription) {
         this.shortDescription = shortDescription;
+    }
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
     }
 }

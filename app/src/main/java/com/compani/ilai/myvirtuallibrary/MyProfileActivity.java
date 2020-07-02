@@ -19,8 +19,8 @@ public class MyProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_profile);
         initView();
 
-        editUsername.setText(RegisterActivity.prefs.getString(USERNAME_SP, null));
-        editLibraryName.setText(RegisterActivity.prefs.getString(LIBRARY_NAME_SP, null));
+//        editUsername.setText(RegisterActivity.prefs.getString(USERNAME_SP, null));
+//        editLibraryName.setText(RegisterActivity.prefs.getString(LIBRARY_NAME_SP, null));
     }
 
 
