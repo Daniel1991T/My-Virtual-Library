@@ -291,10 +291,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_BOOK_ID + " = " + book.getId();
 
         Cursor cursor = db.rawQuery(queryToDelete, null);
+
+        boolean success = cursor.moveToFirst();
         cursor.close();
         db.close();
 
-        return cursor.moveToFirst();
+        return success;
     }
 
     public boolean deleteFromAlreadyReadBooksList(Book book) {
@@ -303,10 +305,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_BOOK_ID + " = " + book.getId();
 
         Cursor cursor = db.rawQuery(queryToDelete, null);
+        boolean success = cursor.moveToFirst();
         cursor.close();
         db.close();
 
-        return cursor.moveToFirst();
+        return success;
     }
 
     public boolean deleteFromWantToReadBookList(Book book) {
@@ -314,10 +317,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String queryToDelete = "DELETE FROM " + WANT_TO_READ_BOOKS_TABLE + " WHERE " +
                 COLUMN_BOOK_ID + " = " + book.getId();
         Cursor cursor = db.rawQuery(queryToDelete, null);
+        boolean success = cursor.moveToFirst();
         cursor.close();
         db.close();
 
-        return cursor.moveToFirst();
+        return success;
     }
 
     public boolean deleteFormCurrentlyReadingBookList(Book book) {
@@ -325,10 +329,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String queryToDelete = "DELETE FROM " + CURRENTLY_READING_BOOK_TABLE + " WHERE " +
                 COLUMN_BOOK_ID + " = " + book.getId();
         Cursor cursor = db.rawQuery(queryToDelete, null);
+        boolean success = cursor.moveToFirst();
         cursor.close();
         db.close();
 
-        return cursor.moveToFirst();
+        return success;
     }
 
     public boolean deleteFormFavoriteBookList(Book book) {
@@ -336,10 +341,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String queryToDelete = "DELETE FROM " + FAVORITE_BOOK_TABLE + " WHERE " +
                 COLUMN_BOOK_ID + " = " + book.getId();
         Cursor cursor = db.rawQuery(queryToDelete, null);
+        boolean success = cursor.moveToFirst();
         cursor.close();
         db.close();
 
-        return cursor.moveToFirst();
+        return success;
     }
 
 

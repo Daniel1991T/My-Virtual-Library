@@ -251,7 +251,6 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                 }
             });
             txtBookDelete = itemView.findViewById(R.id.txtBookDelete);
-
         }
     }
 }
