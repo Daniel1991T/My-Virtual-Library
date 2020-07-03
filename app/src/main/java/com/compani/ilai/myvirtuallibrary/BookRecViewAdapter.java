@@ -70,6 +70,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
             TransitionManager.beginDelayedTransition(holder.parent);
             holder.expandedRelLayout.setVisibility(View.VISIBLE);
             holder.downArrow.setVisibility(View.GONE);
+
             if (parentActivity.equals(PARENT_ALL_BOOKS)) {
                 holder.txtBookDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -144,6 +145,8 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
+                        builder.create().show();
+                        notifyDataSetChanged();
                     }
                 });
             } else if (parentActivity.equals(PARENT_CURRENTLY_READING)) {
@@ -167,6 +170,8 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                             public void onClick(DialogInterface dialog, int which) {
                             }
                         });
+                        builder.create().show();
+                        notifyDataSetChanged();
                     }
                 });
             } else {
@@ -191,6 +196,8 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
 
                             }
                         });
+                        builder.create().show();
+                        notifyDataSetChanged();
                     }
                 });
             }

@@ -109,7 +109,7 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private void handleAlreadyReadBook(final Book book) {
-        ArrayList<Book> alreadyReadBooks = databaseHelper.getCurrentlyReadingBooks();
+        ArrayList<Book> alreadyReadBooks = databaseHelper.getAlreadyReadBooks();
         boolean existInAlreadyReadBook = false;
         for (Book b : alreadyReadBooks) {
             if (b.getId() == book.getId()) {
@@ -136,7 +136,7 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private void handleFavoriteBook(final  Book book) {
-        ArrayList<Book> favoriteBook = databaseHelper.getCurrentlyReadingBooks();
+        ArrayList<Book> favoriteBook = databaseHelper.getFavoriteBooks();
         boolean existInFavoriteBook = false;
         for (Book b : favoriteBook) {
             if (b.getId() == book.getId()) {

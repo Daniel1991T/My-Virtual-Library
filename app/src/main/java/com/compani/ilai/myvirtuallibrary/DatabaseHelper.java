@@ -40,7 +40,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableAllBooks = "CREATE TABLE IF NOT EXISTS " + ALL_BOOKS_TABLE + COLUMN_ALL_TABLES;
         db.execSQL(createTableAllBooks);
 
-        String createTableCurrentlyReadingBook = "CREATE TABLE IF NOT EXISTS " + CURRENTLY_READING_BOOK_TABLE + " (" + COLUMN_BOOK_ID + " INTEGER PRIMARY KEY)";
+        String createTableCurrentlyReadingBook = "CREATE TABLE IF NOT EXISTS " + CURRENTLY_READING_BOOK_TABLE + " ("
+                + COLUMN_BOOK_ID + " INTEGER PRIMARY KEY)";
         db.execSQL(createTableCurrentlyReadingBook);
 
         String createTableWantToReadBooks = "CREATE TABLE IF NOT EXISTS " + WANT_TO_READ_BOOKS_TABLE + " (" +
@@ -111,11 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_BOOK_AUTHOR, book.getAuthor());
-        cv.put(COLUMN_BOOK_PAGES, book.getPages());
-        cv.put(COLUMN_BOOK_GEN, book.getGen());
-        cv.put(COLUMN_BOOK_IMAGE_URL, book.getUrlImage());
-        cv.put(COLUMN_BOOK_DESCRIPTION, book.getShortDescription());
+        cv.put(COLUMN_BOOK_ID, book.getId());
 
         long insert = db.insert(CURRENTLY_READING_BOOK_TABLE, null, cv);
         return insert != -1;
@@ -127,18 +124,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(querySearch, null);
         Book book;
         if (cursor.moveToFirst()) {
-            do {
-                int id = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String author = cursor.getString(2);
-                int pages = cursor.getInt(3);
-                String gen = cursor.getString(4);
-                String urlImage = cursor.getString(5);
-                String description = cursor.getString(6);
-                Log.d(TAG, "getAllBooksList: " + id + " " + name);
-                book = new Book(id, name, author, pages, gen, urlImage, description);
-                return book;
-            } while (cursor.moveToNext());
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            String author = cursor.getString(2);
+            int pages = cursor.getInt(3);
+            String gen = cursor.getString(4);
+            String urlImage = cursor.getString(5);
+            String description = cursor.getString(6);
+            Log.d(TAG, "getAllBooksList: " + id + " " + name);
+            book = new Book(id, name, author, pages, gen, urlImage, description);
+            return book;
         }
         cursor.close();
         db.close();
@@ -216,7 +211,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_BOOK_ID, book.getId());
-        long insert = db.insert(ALREADY_READ_TABLE, null, cv);
+        long insert = db.insert(FAVORITE_BOOK_TABLE, null, cv);
         return insert != -1;
     }
 
