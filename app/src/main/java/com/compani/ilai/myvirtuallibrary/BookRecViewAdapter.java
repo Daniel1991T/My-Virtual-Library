@@ -83,6 +83,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                                 DatabaseHelper db = new DatabaseHelper(mContext);
                                 if (db.deleteFromAllBooksList(books.get(position))) {
                                     Toast.makeText(mContext, "Book Removed!", Toast.LENGTH_SHORT).show();
+                                    notifyItemChanged(position);
                                 }
                             }
                         });
@@ -93,7 +94,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                             }
                         });
                         builder.create().show();
-                        notifyDataSetChanged();
+                        notifyItemChanged(position);
                     }
                 });
             }else if (parentActivity.equals(PARENT_ALREADY_READ)) {

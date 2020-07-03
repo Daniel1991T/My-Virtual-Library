@@ -22,14 +22,18 @@ public class AddBookActivity extends AppCompatActivity {
         btnAddBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setBook();
-                Intent intent = new Intent(AddBookActivity.this, AllBooksActivity.class);
-                startActivity(intent);
+                if (setBook()) {
+                    Toast.makeText(AddBookActivity.this, "Book successful add!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddBookActivity.this, AllBooksActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(AddBookActivity.this, "Something wrong happened, try again", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-    private void setBook() {
+    private boolean setBook() {
         String name = eTxtName.getText().toString().trim();
         String author = eTxtAuthor.getText().toString().trim();
         int pages = Integer.parseInt(eTxtPages.getText().toString().trim());
@@ -37,10 +41,14 @@ public class AddBookActivity extends AppCompatActivity {
         String urlImage = eTxtImageUrl.getText().toString().trim();
         String description = eTxtDescription.getText().toString().trim();
         Book book = new Book(-1, name, author, pages, gen, urlImage, description);
+        if (name.equals("") || author.equals("")) {
+            Toast.makeText(this, "Need completed all fields!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
 
         DatabaseHelper databaseHelper = new DatabaseHelper(AddBookActivity.this);
-        boolean success = databaseHelper.addBookToAllBooksList(book);
-        Toast.makeText(this, "Success = " + success, Toast.LENGTH_SHORT).show();
+
+        return databaseHelper.addBookToAllBooksList(book);
     }
 
     private void initView() {
@@ -52,5 +60,12 @@ public class AddBookActivity extends AppCompatActivity {
         eTxtPages = findViewById(R.id.addBookPages);
         eTxtImageUrl = findViewById(R.id.addBookUrlImage);
         eTxtDescription = findViewById(R.id.addBookDescription);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, AllBooksActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

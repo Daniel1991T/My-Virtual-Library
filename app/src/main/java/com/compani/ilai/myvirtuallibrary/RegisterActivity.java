@@ -122,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
-        /**
+        /*
          * (?=.*[0-9]) - a digit must occur at least once
          * (?=.*[a-z]) - a lower case letter must occur at least once
          * (?=.*[A-Z]) - an upper case letter must occur at least once
