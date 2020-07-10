@@ -9,7 +9,10 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import static com.compani.ilai.myvirtuallibrary.Utils.LIBRARY_NAME_SP;
 
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -30,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String WANT_TO_READ_BOOKS_TABLE = "WANT_TO_READ_BOOKS_TABLE";
     private static final String FAVORITE_BOOK_TABLE = "FAVORITE_BOOK_TABLE";
     public static final String ALREADY_READ_TABLE = "ALREADY_READ_TABLE";
+//    public static final String DATABASE_NAME = RegisterActivity.prefs.getString(LIBRARY_NAME_SP, null) + ".db";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "book.db", null, 1);
@@ -341,6 +345,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return success;
+    }
+
+    public int getAllBooksNumber() {
+        String query = "SELECT COUNT(*) AS total FROM " + ALL_BOOKS_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+    public int getAlreadyReadBooksNumber() {
+        String query = "SELECT COUNT(*) AS total FROM " + ALREADY_READ_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+    public int getFavoriteBooksNumber() {
+        String query = "SELECT COUNT(*) AS total FROM " + FAVORITE_BOOK_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        int count = cursor.getInt(0);
+        cursor.close();
+        db.close();
+        return count;
     }
 
 

@@ -57,4 +57,17 @@
     <string name="add_book_image_url">Image Url</string>
     <string name="add_book_description">Description</string>
     <string name="add_book_btn">Add Book</string>
+
+    <string-array name="gen_type">
+        <item>All Genres Books</item>
+        <item>Autobiography, Biography</item>
+        <item>Business/economics, Self Improvement</item>
+        <item>Crime, Mystery, Political thriller</item>
+        <item>Journal, Drama, Romance</item>
+        <item>History, Encyclopedia</item>
+        <item>Philosophy, Psychology</item>
+        <item>Poetry</item>
+        <item>Religion, spirituality, and new age</item>
+        <item>Science-Fiction, Fantasy </item>
+    </string-array>
 </resources>

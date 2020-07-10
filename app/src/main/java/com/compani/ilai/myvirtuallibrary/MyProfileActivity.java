@@ -18,9 +18,13 @@ public class MyProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
         initView();
+        DatabaseHelper db = new DatabaseHelper(MyProfileActivity.this);
 
 //        editUsername.setText(RegisterActivity.prefs.getString(USERNAME_SP, null));
 //        editLibraryName.setText(RegisterActivity.prefs.getString(LIBRARY_NAME_SP, null));
+        editAllNumberBooks.setText(String.valueOf(db.getAllBooksNumber()));
+        editNumberReadingBooks.setText(String.valueOf(db.getAlreadyReadBooksNumber()));
+        editNumberFavoriteBooks.setText(String.valueOf(db.getFavoriteBooksNumber()));
     }
 
 
