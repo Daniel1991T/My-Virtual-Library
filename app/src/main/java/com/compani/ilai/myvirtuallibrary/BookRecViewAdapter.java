@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,6 +23,8 @@ import androidx.transition.TransitionManager;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
 
 import static com.compani.ilai.myvirtuallibrary.AllBooksActivity.PARENT_ALL_BOOKS;
 import static com.compani.ilai.myvirtuallibrary.AlreadyReadActivity.PARENT_ALREADY_READ;
@@ -28,11 +32,12 @@ import static com.compani.ilai.myvirtuallibrary.CurrentlyReadingActivity.PARENT_
 import static com.compani.ilai.myvirtuallibrary.Utils.BOOK_ID;
 import static com.compani.ilai.myvirtuallibrary.WantToReadActivity.PARENT_WANT_TO_READ;
 
-public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.ViewHolder> {
+public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.ViewHolder> implements Filterable {
 
     public static final String TAG = "BookRecViewAdapter";
 
     private ArrayList<Book> books = new ArrayList<>();
+    private ArrayList<Book> filterBook;
     private Context mContext;
     private String parentActivity;
 
@@ -215,8 +220,41 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
 
     public void setBooks(ArrayList<Book> books) {
         this.books = books;
+        filterBook = new ArrayList<>(books);
         notifyDataSetChanged();
     }
+
+    @Override
+    public Filter getFilter() {
+        return bookFilter;
+    }
+
+    private Filter bookFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Book> filterBooksList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0 || constraint.equals("All Genres")) {
+                filterBooksList.addAll(filterBook);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (Book item : filterBook) {
+                    if (item.getGen().toLowerCase().contains(filterPattern)) {
+                        filterBooksList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filterBooksList;
+            return  results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            books.clear();
+            books.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 

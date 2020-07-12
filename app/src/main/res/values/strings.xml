@@ -41,7 +41,7 @@
     <string name="book_txt_book_name">Book Name: </string>
     <string name="book_txt_author">Author: </string>
     <string name="book_txt_pages">Pages: </string>
-    <string name="book_txt_gen">Gen: </string>
+    <string name="book_txt_gen">Genres: </string>
     <string name="book_txt_short_description">Descriptions: </string>
     <string name="content_description_image_book">Image book</string>
     <string name="default_name">Name</string>
@@ -53,21 +53,9 @@
     <string name="add_book_layout_name">Add book</string>
     <string name="add_book_author">Author</string>
     <string name="add_book_pages">Pages</string>
-    <string name="add_book_gen">Gen</string>
+    <string name="add_book_gen">Genres</string>
     <string name="add_book_image_url">Image Url</string>
     <string name="add_book_description">Description</string>
     <string name="add_book_btn">Add Book</string>
 
-    <string-array name="gen_type">
-        <item>All Genres Books</item>
-        <item>Autobiography, Biography</item>
-        <item>Business/economics, Self Improvement</item>
-        <item>Crime, Mystery, Political thriller</item>
-        <item>Journal, Drama, Romance</item>
-        <item>History, Encyclopedia</item>
-        <item>Philosophy, Psychology</item>
-        <item>Poetry</item>
-        <item>Religion, spirituality, and new age</item>
-        <item>Science-Fiction, Fantasy </item>
-    </string-array>
 </resources>

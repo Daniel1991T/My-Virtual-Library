@@ -5,4 +5,6 @@
     <color name="colorAccent">#16181E</color>
 
     <color name="warningRed">#F44336</color>
+    <color name="selectColour">#BDBDBD</color>
+    <color name="colorCardGenres">#FFFFFF</color>
 </resources>

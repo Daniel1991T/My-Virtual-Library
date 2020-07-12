@@ -11,6 +11,9 @@ import androidx.annotation.Nullable;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static com.compani.ilai.myvirtuallibrary.Utils.LIBRARY_NAME_SP;
 
@@ -379,6 +382,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return count;
     }
+
+    public Set<String> getGenresList() {
+        Set<String> genresList = new HashSet<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + COLUMN_BOOK_GEN + " FROM " + ALL_BOOKS_TABLE;
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String gen = cursor.getString(0);
+                genresList.add(gen);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return genresList;
+    }
+
+
 
 
 
