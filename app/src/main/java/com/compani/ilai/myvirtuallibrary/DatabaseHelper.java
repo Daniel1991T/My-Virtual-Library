@@ -62,6 +62,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createTableAlreadyReadBooks = "CREATE TABLE IF NOT EXISTS " + ALREADY_READ_TABLE + " (" +
                 COLUMN_BOOK_ID + " INTEGER PRIMARY KEY)";
         db.execSQL(createTableAlreadyReadBooks);
+
+        iniData();
     }
 
     @Override
@@ -397,6 +399,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return genresList;
+    }
+
+    private void iniData() {
+        ArrayList<Book> allBooks = new ArrayList<>();
+        allBooks.add(new Book(1, "Deep Work", "Cal Newport", 304,
+                "Dezvoltare personala", "https://cdn4.libris.ro/img/pozeprod/59/1000/32/1258010-JVYC.jpg",
+                "IPOTEZA MUNCII PROFUNDE: abilitatea de a indeplini o munca profunda devine din ce in ce mai rara " +
+                        "si, implicit, din ce in ce mai valoroasa in economia noastra. " +
+                        "Drept urmare, cei foarte putini care cultiva si, mai apoi, transforma aceasta abilitate in esenta vietii lor profesionale, " +
+                        "vor prospera. Deep Work are doua teluri: primul este de a convinge cititorii ca ipoteza muncii profunde este adevarata. " +
+                        "Cel de‑al doilea, este de a-i invata pe cititori sa profite de aceasta realitate, antrenandu‑si mintea si transformandu‑si" +
+                        " obiceiurile de lucru prin plasarea muncii profunde in centrul vietii lor profesionale."));
+        allBooks.add(new Book(2, "Cum Vad eu lumea", "Albert Einstein", 312,
+                "Stiinta si filosofie",
+                "https://cdn4.libris.ro/img/pozeprod//59/1010/80/884804-TNIO.jpg",
+                "Devenita simbol al stiintei, mai mult, simbol al unei intelepciuni care depaseste frontierele stiintei, " +
+                        "ajungand la intrebarile esentiale despre ordinea universului si rostul nostru pe pamant, " +
+                        "figura lui Einstein continua sa exercite o fascinatie fara egal, atat asupra oamenilor de stiinta, " +
+                        "cat si asupra profanilor, cuceriti de clarviziunea, nonconformismul si umorul sau. " +
+                        "Cum vad eu lumea reuneste articole si conferinte ale lui Einstein, " +
+                        "definitorii pentru calea urmata in cercetarile sale stiintifice, pentru personalitatea si " +
+                        "viziunea lui asupra lumii, texte prin care savantul a urmarit sa se apropie de publicul larg, " +
+                        "fara a lasa in umbra rigoarea fizicianului."));
+        allBooks.add(new Book(3, "Arta de a citi gandurile", "Henrik fexeus", 264,
+                "Psihologie", "https://cdn4.libris.ro/img/pozeprod/59/1000/B6/833145-JVBN.jpg",
+                "Citirea gandurilor nu este un mit. Este o realitate. " +
+                        "Doar ca este putin diferita de ceea ce isi imagineaza majoritatea oamenilor. " +
+                        "Cu instrumentele pe care le ofera aceasta carte, vei afla imediat ce gandeste si " +
+                        "simte cealalta persoana si vei putea sa-i influentezi gandurile si sentimentele. " +
+                        "Cand vei observa expresiile afisate pe fata sa, ii vei descifra emotiile. " +
+                        "Vei putea detecta imediat orice lipsa de onestitate sau minciuna. Vei invata " +
+                        "sa fii atent la modul in care ceilalti isi folosesc limbajul corpului " +
+                        "si vocea atunci cand comunica. Folosind acelasi limbaj al corpului si " +
+                        "acelasi ton al vocii ca interlocutorul tau, vei obtine intotdeauna o comunicare limpede " +
+                        "si o intelegere precisa a lucrurilor pe care doresti sa le impartasesti: la o intalnire romantica, " +
+                        "la un interviu pentru angajare sau in familie."
+        ));
+        allBooks.add(new Book(4, "Bun venit in univers", "Neil Degrasse", 480,
+                "Astronomie", "https://cdn.dc5.ro/img-prod/2326883-0.jpeg",
+                "Intr-un stil incitant, autorii povestesc cele mai recente descoperiri in astrofizica," +
+                        " purtandu-si cititorii de la sistemul nostru solar pana la cele mai indepartate regiuni ale Universului cunoscut: " +
+                        "Cum traiesc si cum mor stelele? De ce nu mai e Pluto planeta? Ce sanse sunt sa existe viata pe alte planete? " +
+                        "Cum a luat nastere Universul? Suntem singuri sau facem parte dintr-un multivers?"));
+        allBooks.add(new Book(4, "Origini", "Dan Brown", 600, "Literatura universala",
+                "https://cdn4.libris.ro/img/pozeprod/59/1010/33/1192949-IMSD.jpg",
+                "De aceasta data, profesorul Robert Langdon este invitat la Muzeul Guggenheim din Bilbao pentru a lua parte la ceremonia de dezvaluire a unei inventii care „va schimba fata stiintei pentru totdeauna“.\n" +
+                        "Gazda este fostul student al profesorului, milionarul Edmond Kirsch, ale carui realizari high-tech l-au facut celebru in toata lumea. El va prezenta pentru prima data descoperirea care raspunde la doua dintre intrebarile fundamentale ale omenirii.\n" +
+                        "Seara meticulos pregatita se transforma insa in haos, pretioasa descoperire a lui Kirsch risca sa fie pierduta pentru totdeauna, iar Langdon, insotit de eleganta directoare a muzeului, Ambra Vidal, este nevoit sa zboare la Barcelona pentru a localiza parola de decriptare a descoperirii lui Kirsch.\n" +
+                        "Strabatand coridoarele intunecate ale istoriei secrete si extremismului religios, cei doi trebuie sa faca fata unui inamic periculos, al carui singur scop este sa il reduca la tacere pe Edmond Kirsch.\n" +
+                        "Intr-o cursa contracronometru marcata de simboluri enigmatice si indicii oferite de arta moderna, Langdon si Vidal identifica, in cele din urma socanta descoperire a lui Kirsch si adevarul extraordinar pe care ea il contine."));
+
+        for (Book book : allBooks) {
+            addBookToAllBooksList(book);
+        }
     }
 
 

@@ -12,16 +12,18 @@
         android:layout_height="80dp"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
+
         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            android:id="@+id/allBookSpinner"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:id="@+id/allBookSpinner" />
+            android:layout_height="45dp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/allBookRecView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +35,9 @@
         android:id="@+id/fabAddBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
         android:clickable="true"
         android:focusable="true"
         app:backgroundTint="@color/colorPrimary"
@@ -49,6 +51,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="80dp" />
+        app:layout_constraintGuide_begin="45dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

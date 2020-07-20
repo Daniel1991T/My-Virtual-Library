@@ -71,10 +71,8 @@ public class AllBooksActivity extends AppCompatActivity {
         if (selectedGenres.equals("All Genres")) {
             ArrayList<Book> books = new ArrayList<>(databaseHelper.getAllBooksList());
             adapterBook.setBooks(books);
-
         } else {
             adapterBook.getFilter().filter(selectedGenres);
-
         }
 
     }
