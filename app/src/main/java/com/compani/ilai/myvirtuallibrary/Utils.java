@@ -2,6 +2,8 @@ package com.compani.ilai.myvirtuallibrary;
 
 import android.content.Context;
 
+import com.compani.ilai.myvirtuallibrary.services.Book;
+
 import java.util.ArrayList;
 
 public class Utils {

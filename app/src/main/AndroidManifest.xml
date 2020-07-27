@@ -13,17 +13,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AboutActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".AlreadyReadActivity" />
-        <activity android:name=".FavoriteActivity" />
-        <activity android:name=".CurrentlyReadingActivity" />
-        <activity android:name=".WantToReadActivity" />
-        <activity android:name=".AddBookActivity" />
-        <activity android:name=".AllBooksActivity" />
-        <activity android:name=".BooksActivity" />
-        <activity android:name=".MyProfileActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".view.book.AlreadyReadActivity" />
+        <activity android:name=".view.book.FavoriteActivity" />
+        <activity android:name=".view.book.CurrentlyReadActivity" />
+        <activity android:name=".view.book.WantToReadActivity" />
+        <activity android:name=".services.AddBookActivity" />
+        <activity android:name=".view.book.AllBooksActivity" />
+        <activity android:name=".view.book.BooksActivity" />
+        <activity android:name=".view.profile.MyProfileActivity" />
+        <activity android:name=".view.loginRegister.RegisterActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".view.loginRegister.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

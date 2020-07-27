@@ -1,4 +1,4 @@
-package com.compani.ilai.myvirtuallibrary;
+package com.compani.ilai.myvirtuallibrary.services;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,16 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.compani.ilai.myvirtuallibrary.R;
+import com.compani.ilai.myvirtuallibrary.repository.AllBookRepository;
+import com.compani.ilai.myvirtuallibrary.view.book.AllBooksActivity;
+
 public class AddBookActivity extends AppCompatActivity {
 
     private Button btnAddBook;
     private EditText eTxtName, eTxtAuthor, eTxtPages, eTxtGen, eTxtImageUrl, eTxtDescription;
+    private AllBookRepository bookRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
         initView();
+        bookRepository = new AllBookRepository(this);
 
         btnAddBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +55,7 @@ public class AddBookActivity extends AppCompatActivity {
             return false;
         }
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(AddBookActivity.this);
-
-        return databaseHelper.addBookToAllBooksList(book);
+        return bookRepository.addBook(book);
     }
 
     private void initView() {

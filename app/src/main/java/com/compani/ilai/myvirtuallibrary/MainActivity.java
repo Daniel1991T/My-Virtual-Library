@@ -6,18 +6,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
+
+import com.compani.ilai.myvirtuallibrary.view.book.CurrentlyReadActivity;
+import com.compani.ilai.myvirtuallibrary.view.book.AllBooksActivity;
+import com.compani.ilai.myvirtuallibrary.view.book.AlreadyReadActivity;
+import com.compani.ilai.myvirtuallibrary.view.book.FavoriteActivity;
+import com.compani.ilai.myvirtuallibrary.view.book.WantToReadActivity;
+import com.compani.ilai.myvirtuallibrary.view.profile.MyProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnMyProfile, btnViewAllBooks, btnCurrentlyReadingBooks, btnWantToReadBooks, btnAlReadBooks,
-    btnFavoriteBooks, btnAbout;
+    private Button btnMyProfile, btnViewAllBooks, btnCurrentlyReadingBooks, btnWantToReadBooks,
+            btnAlReadBooks, btnFavoriteBooks, btnAbout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Utils.getInstance();
 
         initButtons();
 
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         btnCurrentlyReadingBooks.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CurrentlyReadingActivity.class);
+                Intent intent = new Intent(MainActivity.this, CurrentlyReadActivity.class);
                 startActivity(intent);
             }
         });
@@ -88,4 +93,5 @@ public class MainActivity extends AppCompatActivity {
         btnFavoriteBooks = findViewById(R.id.btnFavorite);
         btnAbout = findViewById(R.id.btnAbout);
     }
+
 }

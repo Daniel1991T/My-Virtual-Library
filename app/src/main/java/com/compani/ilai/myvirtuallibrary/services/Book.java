@@ -1,4 +1,6 @@
-package com.compani.ilai.myvirtuallibrary;
+package com.compani.ilai.myvirtuallibrary.services;
+
+import androidx.annotation.Nullable;
 
 public class Book {
     private int id;
@@ -83,5 +85,11 @@ public class Book {
 
     public void setExpanded(boolean expanded) {
         isExpanded = expanded;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        Book book = (Book) obj;
+        return name.equals(book.name);
     }
 }

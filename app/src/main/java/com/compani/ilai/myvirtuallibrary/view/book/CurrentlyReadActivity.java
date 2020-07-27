@@ -1,4 +1,4 @@
-package com.compani.ilai.myvirtuallibrary;
+package com.compani.ilai.myvirtuallibrary.view.book;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,23 +7,31 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.compani.ilai.myvirtuallibrary.services.Book;
+import com.compani.ilai.myvirtuallibrary.services.BookRecViewAdapter;
+import com.compani.ilai.myvirtuallibrary.MainActivity;
+import com.compani.ilai.myvirtuallibrary.R;
+import com.compani.ilai.myvirtuallibrary.repository.CurrentlyReadRepository;
+
 import java.util.ArrayList;
 
-public class CurrentlyReadingActivity extends AppCompatActivity {
+public class CurrentlyReadActivity extends AppCompatActivity {
 
     public static final String PARENT_CURRENTLY_READING = "currentlyReading";
+    private CurrentlyReadRepository mCurrentlyReadRepository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currently_reading);
+        mCurrentlyReadRepository = new CurrentlyReadRepository(this);
 
         RecyclerView recyclerView = findViewById(R.id.currentlyReadRecView);
         BookRecViewAdapter adapter = new BookRecViewAdapter(this, PARENT_CURRENTLY_READING);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        DatabaseHelper db = new DatabaseHelper(CurrentlyReadingActivity.this);
-        ArrayList<Book> currentlyReadingBooks = db.getCurrentlyReadingBooks();
+        ArrayList<Book> currentlyReadingBooks = mCurrentlyReadRepository.getBooksList();
         adapter.setBooks(currentlyReadingBooks);
     }
 

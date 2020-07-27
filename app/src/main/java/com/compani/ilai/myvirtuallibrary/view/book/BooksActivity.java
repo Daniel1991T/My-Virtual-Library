@@ -1,4 +1,4 @@
-package com.compani.ilai.myvirtuallibrary;
+package com.compani.ilai.myvirtuallibrary.view.book;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.compani.ilai.myvirtuallibrary.R;
+import com.compani.ilai.myvirtuallibrary.repository.AllBookRepository;
+import com.compani.ilai.myvirtuallibrary.repository.AlreadyReadRepository;
+import com.compani.ilai.myvirtuallibrary.repository.CurrentlyReadRepository;
+import com.compani.ilai.myvirtuallibrary.services.Book;
+import com.compani.ilai.myvirtuallibrary.repository.FavoriteRepository;
+import com.compani.ilai.myvirtuallibrary.repository.WantToReadRepository;
 
 import java.util.ArrayList;
 
@@ -24,7 +31,7 @@ public class BooksActivity extends AppCompatActivity {
     private TextView txtBookName, txtAuthor, txtPages, txtGen, txtDescription;
     private Button btnAddToWantToRead, btnAddToAlreadyRead, btnAddToCurrentlyReading, btnAddToFavorite;
     private ImageView bookImage;
-    private DatabaseHelper databaseHelper;
+    private AllBookRepository mAllBookRepository;
 
 
     @Override
@@ -32,14 +39,14 @@ public class BooksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books);
         initView();
+        mAllBookRepository = new AllBookRepository(this);
 
         Intent intent = getIntent();
         if (intent != null) {
             int bookId = intent.getIntExtra(BOOK_ID, -1);
             Log.d(TAG, "onCreate: " + bookId);
             if (bookId != -1) {
-                databaseHelper = new DatabaseHelper(BooksActivity.this);
-                Book incomingBook = databaseHelper.getBookById(bookId);
+                Book incomingBook = mAllBookRepository.getBookById(bookId);
                 if (incomingBook != null) {
                     setData(incomingBook);
 
@@ -54,7 +61,8 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private void handleWantToReadBook(final Book book) {
-        ArrayList<Book> wantToReadBooks = (ArrayList<Book>) databaseHelper.getWantToReadBooks();
+        final WantToReadRepository bookRepository = new WantToReadRepository(this);
+        ArrayList<Book> wantToReadBooks = bookRepository.getBooksList();
 
         boolean existInWantToReadBooks = false;
         for (Book b : wantToReadBooks) {
@@ -69,7 +77,7 @@ public class BooksActivity extends AppCompatActivity {
             btnAddToWantToRead.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (databaseHelper.addToWantToReadBooks(book)) {
+                    if (bookRepository.addBook(book)) {
                         Toast.makeText(BooksActivity.this, "Book Added To Wishlist", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(BooksActivity.this, WantToReadActivity.class);
                         startActivity(intent);
@@ -82,7 +90,8 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private void handleCurrentlyReadingBook(final Book book) {
-        ArrayList<Book> currentlyReadList = databaseHelper.getCurrentlyReadingBooks();
+        final CurrentlyReadRepository bookRepository = new CurrentlyReadRepository(this);
+        ArrayList<Book> currentlyReadList = bookRepository.getBooksList();
         boolean existInCurrentlyReadList = false;
         for (Book b : currentlyReadList) {
             if (b.getId() == book.getId()) {
@@ -96,9 +105,9 @@ public class BooksActivity extends AppCompatActivity {
            btnAddToCurrentlyReading.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   if (databaseHelper.addBookToCurrentlyReadBookList(book)) {
+                   if (bookRepository.addBook(book)) {
                        Toast.makeText(BooksActivity.this, "Book Added To Currently Reading!", Toast.LENGTH_SHORT).show();
-                       Intent intent = new Intent(BooksActivity.this, CurrentlyReadingActivity.class);
+                       Intent intent = new Intent(BooksActivity.this, CurrentlyReadActivity.class);
                        startActivity(intent);
                    } else {
                        Toast.makeText(BooksActivity.this, "Something wrong happened, try again!", Toast.LENGTH_SHORT).show();
@@ -109,7 +118,8 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private void handleAlreadyReadBook(final Book book) {
-        ArrayList<Book> alreadyReadBooks = databaseHelper.getAlreadyReadBooks();
+        final AlreadyReadRepository bookRepository = new AlreadyReadRepository(this);
+        ArrayList<Book> alreadyReadBooks = bookRepository.getBooksList();
         boolean existInAlreadyReadBook = false;
         for (Book b : alreadyReadBooks) {
             if (b.getId() == book.getId()) {
@@ -123,7 +133,7 @@ public class BooksActivity extends AppCompatActivity {
            btnAddToAlreadyRead.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   if (databaseHelper.addToAlreadyReadBooks(book)) {
+                   if (bookRepository.addBook(book)) {
                        Toast.makeText(BooksActivity.this, "Book Added To Currently Reading!", Toast.LENGTH_SHORT).show();
                        Intent intent = new Intent(BooksActivity.this, AlreadyReadActivity.class);
                        startActivity(intent);
@@ -136,7 +146,8 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private void handleFavoriteBook(final  Book book) {
-        ArrayList<Book> favoriteBook = databaseHelper.getFavoriteBooks();
+        final FavoriteRepository bookRepository = new FavoriteRepository(this);
+        ArrayList<Book> favoriteBook = bookRepository.getBooksList();
         boolean existInFavoriteBook = false;
         for (Book b : favoriteBook) {
             if (b.getId() == book.getId()) {
@@ -150,7 +161,7 @@ public class BooksActivity extends AppCompatActivity {
             btnAddToFavorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (databaseHelper.addToFavoriteBooks(book)) {
+                    if (bookRepository.addBook(book)) {
                         Toast.makeText(BooksActivity.this, "Book Added To Currently Reading!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(BooksActivity.this, FavoriteActivity.class);
                         startActivity(intent);

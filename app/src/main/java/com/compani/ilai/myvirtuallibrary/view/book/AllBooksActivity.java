@@ -1,4 +1,4 @@
-package com.compani.ilai.myvirtuallibrary;
+package com.compani.ilai.myvirtuallibrary.view.book;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,15 +6,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.compani.ilai.myvirtuallibrary.services.AddBookActivity;
+import com.compani.ilai.myvirtuallibrary.services.Book;
+import com.compani.ilai.myvirtuallibrary.services.BookRecViewAdapter;
+import com.compani.ilai.myvirtuallibrary.MainActivity;
+import com.compani.ilai.myvirtuallibrary.R;
+import com.compani.ilai.myvirtuallibrary.repository.AllBookRepository;
+import com.compani.ilai.myvirtuallibrary.repository.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class AllBooksActivity extends AppCompatActivity {
@@ -27,11 +36,15 @@ public class AllBooksActivity extends AppCompatActivity {
     private FloatingActionButton addBook;
     private Spinner mSpinner;
     private String selectedGenres = "All Genres";
+    private AllBookRepository mAllBookRepository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_books);
+        mAllBookRepository = new AllBookRepository(this);
+
 
         adapterBook = new BookRecViewAdapter(this, PARENT_ALL_BOOKS);
         bookRecView = findViewById(R.id.allBookRecView);
@@ -48,11 +61,10 @@ public class AllBooksActivity extends AppCompatActivity {
             }
         });
 
-        DatabaseHelper databaseHelper = new DatabaseHelper(AllBooksActivity.this);
         mSpinner = findViewById(R.id.allBookSpinner);
-         ArrayList<String> genresList = new ArrayList<>();
+        ArrayList<String> genresList = new ArrayList<>();
         genresList.add("All Genres");
-        genresList.addAll(databaseHelper.getGenresList());
+        genresList.addAll(mAllBookRepository.getGenresList());
         mSpinner.setAdapter(new ArrayAdapter<>(AllBooksActivity.this,
                 R.layout.spinner_drop_down_item, genresList));
         mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -60,16 +72,18 @@ public class AllBooksActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedGenres = parent.getItemAtPosition(position).toString();
                 adapterBook.getFilter().filter(selectedGenres);
+                Log.d(TAG, "onItemSelected: called");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 selectedGenres = "All Genres";
+                Log.d(TAG, "onNothingSelected: called");
             }
         });
 
         if (selectedGenres.equals("All Genres")) {
-            ArrayList<Book> books = new ArrayList<>(databaseHelper.getAllBooksList());
+            ArrayList<Book> books = new ArrayList<>(mAllBookRepository.getBooksList());
             adapterBook.setBooks(books);
         } else {
             adapterBook.getFilter().filter(selectedGenres);
