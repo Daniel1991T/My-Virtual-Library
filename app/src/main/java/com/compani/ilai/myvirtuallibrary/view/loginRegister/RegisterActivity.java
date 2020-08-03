@@ -16,12 +16,14 @@ import android.widget.Toast;
 import com.compani.ilai.myvirtuallibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.compani.ilai.myvirtuallibrary.Utils.EMAIL_REGEX;
 import static com.compani.ilai.myvirtuallibrary.Utils.LIBRARY_NAME_SP;
 import static com.compani.ilai.myvirtuallibrary.Utils.PROFILE;
 import static com.compani.ilai.myvirtuallibrary.Utils.USERNAME_SP;
@@ -30,11 +32,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     private final String TAG = "Register";
 
-    private TextView txtWarningUsername, txtWarningEmail, txtWarningLibraryName, txtWarningPassword,
-    txtWarningPassConfirm, txtRegisterToLogin;
+    private TextView txtRegisterToLogin;
     private Button btnRegister;
 
     private EditText eTxtUsername, eTxtEmail, eTxtLibraryName, eTxtPassword, eTxtPassConfirm;
+    private TextInputLayout iTxtLayoutUsername, iTxtLayoutEmail, iTxtLayoutLibraryName, iTxtLayoutPassword,
+    iTxtLayoutPasswordConfirm;
 
     private FirebaseAuth mAuth;
 
@@ -52,20 +55,8 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                invisibleButton();
-                if (isValidEmail() && isValidPassword()) {
+                if (isValidEmail() && isValidPassword() && isSamePassword()) {
                     createFirebaseUser();
-                } else {
-                    //TODO: invalid password or email
-                    if (!isValidEmail()) {
-                        txtWarningEmail.setText("Email invalid! Try again");
-                        txtWarningEmail.setVisibility(View.VISIBLE);
-                    }
-
-                    if (!isValidPassword()) {
-                        txtWarningPassword.setText("Password is short at 8 characters or no upper case");
-                        txtWarningPassword.setVisibility(View.VISIBLE);
-                    }
                 }
             }
         });
@@ -105,44 +96,86 @@ public class RegisterActivity extends AppCompatActivity {
 
     private boolean isValidEmail() {
         String email = eTxtEmail.getText().toString().trim();
-        String regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-        Pattern pattern = Pattern.compile(regex);
+        if (email.isEmpty()) {
+            iTxtLayoutEmail.setError("Enter Email");
+        }
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
         Matcher matcher = pattern.matcher(email.toLowerCase());
         Log.d(TAG, "isValidEmail: " + matcher.matches() + " " + email);
-        return matcher.matches();
+        if (!matcher.matches()) {
+            iTxtLayoutEmail.setError("Email invalid!");
+            return false;
+        } else {
+            iTxtLayoutEmail.setError(null);
+            return true;
+        }
     }
 
-    private boolean isValidPassword() {
+    public boolean isValidPassword() {
+        String password = eTxtPassword.getText().toString().trim();
+        Pattern specialCharPattern = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Pattern upperCasePattern = Pattern.compile("[A-Z ]");
+        Pattern lowerCasePattern = Pattern.compile("[a-z ]");
+        Pattern digitCasePattern = Pattern.compile("[0-9]");
 
+        if (password.length() < 8) {
+            iTxtLayoutPassword.setError("Password length must have al least 8 character!");
+            return false;
+        } else {
+            iTxtLayoutPassword.setError(null);
+        }
+
+        if (!specialCharPattern.matcher(password).find()) {
+            iTxtLayoutPassword.setError("Password must have at least one special character!");
+            return false;
+        } else {
+            iTxtLayoutPassword.setError(null);
+        }
+
+        if (!upperCasePattern.matcher(password).find()) {
+            iTxtLayoutPassword.setError("Password must have at least one uppercase character!");
+            return false;
+        } else {
+            iTxtLayoutPassword.setError(null);
+        }
+
+        if (!lowerCasePattern.matcher(password).find()) {
+            iTxtLayoutPassword.setError("Password must have at least one lowercase character!");
+            return false;
+        } else {
+            iTxtLayoutPassword.setError(null);
+        }
+
+        if (!digitCasePattern.matcher(password).find()) {
+            iTxtLayoutPassword.setError("Password must have at least one digit character!");
+            return false;
+        } else {
+            iTxtLayoutPassword.setError(null);
+        }
+        return true;
+    }
+
+    private boolean isSamePassword() {
         String password = eTxtPassword.getText().toString().trim();
         String confirmPassword = eTxtPassConfirm.getText().toString().trim();
         if (!password.equals(confirmPassword)) {
-            txtWarningPassConfirm.setText("Password is not same");
-            txtWarningPassConfirm.setVisibility(View.VISIBLE);
+            iTxtLayoutPassword.setError("Passwords do not match");
+            iTxtLayoutPasswordConfirm.setError("Passwords do not match");
             return false;
+        } else {
+            iTxtLayoutPasswordConfirm.setError(null);
+            iTxtLayoutPassword.setError(null);
         }
-
-        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}$";
-        /*
-         * (?=.*[0-9]) - a digit must occur at least once
-         * (?=.*[a-z]) - a lower case letter must occur at least once
-         * (?=.*[A-Z]) - an upper case letter must occur at least once
-         * (?=\\S+$) - no whitespace allowed in the entire string
-         * .{8,} - at least 8 characters
-         */
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(password);
-        Log.d(TAG, "isValidPassword: "  + matcher.matches() + " " + password);
-        return matcher.matches();
+        return true;
     }
 
     private void initView() {
-        txtWarningUsername = findViewById(R.id.rgWarningUsername);
-        txtWarningEmail = findViewById(R.id.rgTxtWarningEmail);
-        txtWarningLibraryName = findViewById(R.id.rgTxtWarningLibraryName);
-        txtWarningPassword = findViewById(R.id.rgTxtWarningPassword);
-        txtWarningPassConfirm = findViewById(R.id.rgTxtWarningPassConfirm);
         txtRegisterToLogin = findViewById(R.id.btnTxtRegisteToLogin);
+        iTxtLayoutEmail = findViewById(R.id.iTxtLayoutRegEmail);
+        iTxtLayoutUsername = findViewById(R.id.iTxtLayoutRegUsername);
+        iTxtLayoutLibraryName = findViewById(R.id.iTxtLayoutRegLibraryName);
+        iTxtLayoutPassword = findViewById(R.id.iTxtLayoutRegPassword);
+        iTxtLayoutPasswordConfirm = findViewById(R.id.iTxtLayoutRegPasswordConfirm);
 
         btnRegister = findViewById(R.id.btnRegister);
 
@@ -156,13 +189,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void invisibleButton() {
-        txtWarningEmail.setVisibility(View.GONE);
-        txtWarningPassword.setVisibility(View.GONE);
-        txtWarningPassConfirm.setVisibility(View.GONE);
-        txtWarningLibraryName.setVisibility(View.GONE);
-        txtWarningUsername.setVisibility(View.GONE);
-    }
 
     private void saveUsernameLibraryName() {
         String username = eTxtUsername.getText().toString().trim();

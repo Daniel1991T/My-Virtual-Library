@@ -4,165 +4,197 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.loginRegister.RegisterActivity">
+    tools:context=".view.loginRegister.RegisterActivity"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/txtRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:fontFamily="@font/bevan"
+        android:fontFamily="@font/roboto"
         android:text="@string/register_activity_name"
         android:textSize="18sp"
+        android:textColor="@color/secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/rgUsernameETxt"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/iTxtLayoutRegUsername"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:layout_margin="25dp"
         android:ems="10"
         android:fontFamily="@font/bevan"
         android:hint="@string/login_username"
+        app:boxStrokeColor="@color/secondary"
+        android:background="@color/colorPrimaryDark"
+        android:textColorHint="@color/secondary"
+        app:hintTextColor="@color/secondary"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/secondary"
+        android:importantForAutofill="no"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtRegister">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rgUsernameETxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textColor="@color/secondary"
+            android:textColorHint="@color/secondary"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/iTxtLayoutRegEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="0dp"
+        android:ems="10"
+        android:fontFamily="@font/bevan"
+        android:background="@color/colorPrimaryDark"
+        app:boxStrokeColor="@color/secondary"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:textColorHint="@color/secondary"
+        app:hintTextColor="@color/secondary"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/warningRed"
+        android:importantForAutofill="no"
+        android:inputType="textEmailSubject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iTxtLayoutRegUsername">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rgEmailETxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_email"
+            android:textColor="@color/secondary"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/iTxtLayoutRegLibraryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:background="@color/colorPrimaryDark"
+        app:boxStrokeColor="@color/secondary"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/secondary"
+        app:hintTextColor="@color/secondary"
+        android:textColorHint="@color/secondary"
+        android:ems="10"
+        android:fontFamily="@font/bevan"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/iTxtLayoutRegEmail">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rgTxtLibraryName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/my_profile_library_name"
+            android:textColor="@color/secondary"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/rgEmailETxt"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/iTxtLayoutRegPassword"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="0dp"
         android:ems="10"
-        android:fontFamily="@font/bevan"
-        android:hint="@string/register_email"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:fontFamily="@font/roboto"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/secondary"
+        android:textColorHint="@color/secondary"
+        app:hintTextColor="@color/secondary"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/secondary"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/warningRed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgUsernameETxt" />
+        app:layout_constraintTop_toBottomOf="@+id/iTxtLayoutRegLibraryName"
+        android:importantForAutofill="no">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rgPasswordETxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_password"
+            android:inputType="textPassword"
+            android:textColor="@color/secondary"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/rgTxtLibraryName"
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/iTxtLayoutRegPasswordConfirm"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxStrokeColor="@color/secondary"
+        android:textColorHint="@color/secondary"
+        app:hintTextColor="@color/secondary"
+        app:passwordToggleTint="@color/secondary"
+        app:passwordToggleEnabled="true"
         android:ems="10"
-        android:fontFamily="@font/bevan"
-        android:hint="@string/register_library_name"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgEmailETxt" />
-
-    <EditText
-        android:id="@+id/rgPasswordETxt"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:fontFamily="@font/bevan"
-        android:hint="@string/register_password"
+        android:fontFamily="@font/roboto"
+        app:errorTextColor="@color/warningRed"
+        app:errorEnabled="true"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgTxtLibraryName"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/rgETxtPassConfirm"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:fontFamily="@font/bevan"
-        android:hint="@string/register_confirm_password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgPasswordETxt"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/iTxtLayoutRegPassword"
+        android:importantForAutofill="no">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/rgETxtPassConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_confirm_password"
+            android:textColor="@color/secondary"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginTop="50dp"
-        android:fontFamily="@font/bevan"
+        android:fontFamily="@font/roboto"
+        android:backgroundTint="@color/secondary"
+        android:background="@color/secondary"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/register_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgETxtPassConfirm" />
+        app:layout_constraintTop_toBottomOf="@+id/iTxtLayoutRegPasswordConfirm" />
 
     <TextView
         android:id="@+id/btnTxtRegisteToLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:fontFamily="@font/bevan"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/secondary"
         android:text="@string/register_to_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister" />
 
-    <TextView
-        android:id="@+id/rgWarningUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/register_warning"
-        android:textColor="@color/warningRed"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/rgUsernameETxt"
-        app:layout_constraintStart_toStartOf="@+id/rgUsernameETxt" />
-
-    <TextView
-        android:id="@+id/rgTxtWarningEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/register_warning"
-        android:textColor="@color/warningRed"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/rgEmailETxt"
-        app:layout_constraintStart_toStartOf="@+id/rgEmailETxt" />
-
-    <TextView
-        android:id="@+id/rgTxtWarningLibraryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/register_warning"
-        android:textColor="@color/warningRed"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/rgTxtLibraryName"
-        app:layout_constraintStart_toStartOf="@+id/rgTxtLibraryName" />
-
-    <TextView
-        android:id="@+id/rgTxtWarningPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/register_warning"
-        android:textColor="@color/warningRed"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/rgPasswordETxt"
-        app:layout_constraintStart_toStartOf="@+id/rgPasswordETxt" />
-
-    <TextView
-        android:id="@+id/rgTxtWarningPassConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:text="@string/register_warning"
-        android:textColor="@color/warningRed"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/rgETxtPassConfirm"
-        app:layout_constraintStart_toStartOf="@+id/rgETxtPassConfirm" />
 </androidx.constraintlayout.widget.ConstraintLayout>
