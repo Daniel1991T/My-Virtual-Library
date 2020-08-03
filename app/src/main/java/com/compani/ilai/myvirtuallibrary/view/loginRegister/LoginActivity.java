@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -16,14 +17,24 @@ import com.compani.ilai.myvirtuallibrary.MainActivity;
 import com.compani.ilai.myvirtuallibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static com.compani.ilai.myvirtuallibrary.Utils.EMAIL_REGEX;
+import static com.compani.ilai.myvirtuallibrary.Utils.PASSWORD_REGEX;
 
 public class LoginActivity extends AppCompatActivity {
 
     private Button btnLogin;
-    private TextView txtBtnLoginToRegister, txtWarningEmail, txtWarningPassword;
-    private EditText eTxtEmail, eTxtPassword;
+    private TextView txtBtnLoginToRegister;
+    private EditText iTxtPassword;
+    private TextInputEditText eTxtEmail;
+    private TextInputLayout iTxtLayoutEmail, iTxtLayoutPassword;
 
     private FirebaseAuth mAuth;
     private String  TAG = "MyApp";
@@ -57,20 +68,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void attemptLogin() {
         String email = eTxtEmail.getText().toString().trim();
-        String password = eTxtPassword.getText().toString().trim();
-        setVisibilityWarning();
+        String password = iTxtPassword.getText().toString().trim();
 
-        if (email.equals("")) {
-            txtWarningEmail.setText("Field empty");
-            txtWarningEmail.setVisibility(View.VISIBLE);
+        if (!validateEmail() | !validatePassword()) {
             return;
         }
-        if (password.equals("")) {
-            txtWarningPassword.setText("Field empty");
-            txtWarningPassword.setVisibility(View.VISIBLE);
-            return;
-        }
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -90,17 +92,57 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void requestFocus(View view) {
+        if (view.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
+    }
+
+    private boolean validateEmail() {
+        String email = eTxtEmail.getText().toString().trim();
+        if (email.isEmpty()) {
+            iTxtLayoutEmail.setError("Enter Email");
+            requestFocus(eTxtEmail);
+            return false;
+        } else {
+            Pattern pattern = Pattern.compile(EMAIL_REGEX);
+            Matcher matcher = pattern.matcher(email.toLowerCase());
+            Log.d(TAG, "isValidEmail: " + matcher.matches() + " " + email);
+            if (!matcher.matches()) {
+                requestFocus(eTxtEmail);
+                iTxtLayoutEmail.setError("Email invalid!");
+                return false;
+            } else {
+                iTxtLayoutEmail.setError(null);
+                return true;
+            }
+        }
+    }
+
+    private boolean validatePassword() {
+        String password = iTxtPassword.getText().toString().trim();
+        if (password.isEmpty()) {
+            iTxtLayoutPassword.setError("Enter Password");
+            return false;
+        } else {
+            Pattern pattern = Pattern.compile(PASSWORD_REGEX);
+            Matcher matcher = pattern.matcher(password);
+            if (!matcher.matches()) {
+                iTxtLayoutPassword.setError("Password invalid");
+                return false;
+            } else {
+                iTxtLayoutPassword.setError(null);
+                return true;
+            }
+        }
+    }
+
     private void initButton() {
         btnLogin = findViewById(R.id.btnLogin);
         txtBtnLoginToRegister = findViewById(R.id.btnTxtLoginToRegister);
         eTxtEmail = findViewById(R.id.loginUsername);
-        eTxtPassword = findViewById(R.id.eTxtLoginPassword);
-        txtWarningEmail = findViewById(R.id.txtVwWarningEmail);
-        txtWarningPassword = findViewById(R.id.txtVwWarningPassword);
-    }
-
-    private void setVisibilityWarning() {
-        txtWarningPassword.setVisibility(View.GONE);
-        txtWarningEmail.setVisibility(View.GONE);
+        iTxtLayoutEmail = findViewById(R.id.loginUsernameLayout);
+        iTxtPassword = findViewById(R.id.eTxtLoginPassword);
+        iTxtLayoutPassword = findViewById(R.id.iTxtLayoutLoginPassword);
     }
 }

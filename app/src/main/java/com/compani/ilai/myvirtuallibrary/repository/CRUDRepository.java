@@ -21,7 +21,7 @@ import static com.compani.ilai.myvirtuallibrary.repository.DatabaseHelper.COLUMN
 import static com.compani.ilai.myvirtuallibrary.repository.DatabaseHelper.COLUMN_BOOK_PAGES;
 
 
-public abstract class CRUDRepository<T, ID> {
+public abstract class CRUDRepository<ID> {
 
     private final SQLiteOpenHelper sqLiteOpenHelper;
     private final String table;
@@ -117,12 +117,8 @@ public abstract class CRUDRepository<T, ID> {
     }
 
     public int getNumberOfBooks() {
-        String query;
-        if (table.equals(ALL_BOOKS_TABLE)) {
-            query = "SELECT COUNT(*) AS total FROM " + ALL_BOOKS_TABLE;
-        } else {
-            query = "SELECT COUNT(*) AS total FROM " + table;
-        }
+        String query = "SELECT COUNT(*) AS total FROM " + table;
+
         SQLiteDatabase db = sqLiteOpenHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();

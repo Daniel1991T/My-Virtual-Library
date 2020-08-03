@@ -4,7 +4,7 @@
     <string name="application_name">My Virtual Library</string>
     <string name="btn_my_profile">My Profile</string>
     <string name="btn_view_all_books">View All Books</string>
-    <string name="btn_currently_read">Currently Reading Book</string>
+    <string name="btn_currently_read">Currently Read Book</string>
     <string name="btn_want_to_read">Your WishList</string>
     <string name="btn_all_read_books">All Read Books</string>
     <string name="btn_favorite_books">See Your Favorites</string>
