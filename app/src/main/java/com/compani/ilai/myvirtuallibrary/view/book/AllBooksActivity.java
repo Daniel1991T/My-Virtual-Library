@@ -45,7 +45,6 @@ public class AllBooksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_books);
         mAllBookRepository = new AllBookRepository(this);
 
-
         adapterBook = new BookRecViewAdapter(this, PARENT_ALL_BOOKS);
         bookRecView = findViewById(R.id.allBookRecView);
         addBook = findViewById(R.id.fabAddBook);

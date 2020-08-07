@@ -5,6 +5,7 @@
     android:id="@+id/mainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".MainActivity">
 
     <ImageView
@@ -24,16 +25,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
+        android:textSize="16sp"
         android:text="@string/application_name"
+        android:textColor="@color/secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoAppView" />
 
     <Button
         android:id="@+id/btnMyProfile"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_marginTop="24dp"
+        android:theme="@style/Button.White"
+        android:background="@color/secondary"
         android:text="@string/btn_my_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,8 +51,12 @@
 
     <Button
         android:id="@+id/btnViewAllBooks"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:backgroundTint="@color/secondary"
         android:layout_marginTop="18dp"
         android:text="@string/btn_view_all_books"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,9 +65,13 @@
 
     <Button
         android:id="@+id/btnCurrentlyRead"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="18dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:backgroundTint="@color/secondary"
         android:text="@string/btn_currently_read"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,9 +79,13 @@
 
     <Button
         android:id="@+id/btnAllReadBooks"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="18dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/btn_all_read_books"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -72,9 +94,13 @@
 
     <Button
         android:id="@+id/btnFavorite"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/btn_favorite_books"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +108,13 @@
 
     <Button
         android:id="@+id/btnAbout"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="18dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/btn_about"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,9 +122,13 @@
 
     <Button
         android:id="@+id/btnWantToRead"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/btn_want_to_read"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

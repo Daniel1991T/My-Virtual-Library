@@ -11,6 +11,10 @@
 
     </style>
 
+    <style name="Button.White" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/secondary</item>
+    </style>
+
     <style name="ErrorText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/warningRed</item>
         <item name="android:textSize">16sp</item>

@@ -173,6 +173,7 @@ public class BooksActivity extends AppCompatActivity {
         }
     }
 
+
     private void setData(Book book) {
         txtBookName.setText(book.getName());
         txtAuthor.setText(book.getAuthor());

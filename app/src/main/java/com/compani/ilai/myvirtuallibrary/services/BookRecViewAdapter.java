@@ -123,7 +123,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                         boolean removedSuccessfully = crudRepository.remove(books.get(position).getId());
                         if (removedSuccessfully) {
                             Toast.makeText(mContext, "Book Removed!", Toast.LENGTH_SHORT).show();
-                            notifyItemChanged(position);
+                            notifyItemRemoved(position);
                         }
                     }
                 });

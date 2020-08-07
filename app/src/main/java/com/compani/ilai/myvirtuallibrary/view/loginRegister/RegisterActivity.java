@@ -55,7 +55,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isValidEmail() && isValidPassword() && isSamePassword()) {
+                if (isValidEmail() && isValidPassword() && isSamePassword()
+                && !isEmpty(eTxtUsername.getText().toString().trim(), iTxtLayoutUsername)
+                && !isEmpty(eTxtLibraryName.getText().toString().trim(), iTxtLayoutLibraryName)) {
                     createFirebaseUser();
                 }
             }
@@ -167,6 +169,14 @@ public class RegisterActivity extends AppCompatActivity {
             iTxtLayoutPassword.setError(null);
         }
         return true;
+    }
+
+    private boolean isEmpty(String field, TextInputLayout inputLayout) {
+        if (field.isEmpty()) {
+            inputLayout.setError("Field empty");
+            return true;
+        }
+        else return false;
     }
 
     private void initView() {

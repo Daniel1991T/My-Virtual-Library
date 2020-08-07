@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.book.BooksActivity">
+    tools:context=".view.book.BooksActivity"
+    android:background="@color/secondary">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/secondary">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imgBook"
@@ -31,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="@string/book_btn_currently_reading"
+                android:textColor="@color/secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,9 +43,9 @@
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/book_btn_want_to_read"
+                android:textColor="@color/secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.431"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/book_btn_already_read"
+                android:textColor="@color/secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/btnAddToWantToReadLIst" />
@@ -64,6 +68,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/book_btn_add_to_favorite"
+                android:textColor="@color/secondary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline"
                 app:layout_constraintTop_toBottomOf="@+id/btnAddToAlreadyReadList" />
@@ -73,8 +78,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:fontFamily="@font/bevan"
+                android:fontFamily="@font/roboto"
                 android:text="@string/book_txt_book_name"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -82,8 +89,10 @@
                 android:id="@+id/txtBookName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bevan"
+                android:fontFamily="@font/roboto"
                 android:text="@string/default_name"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="@+id/nameTxt"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/nameTxt" />
@@ -92,9 +101,11 @@
                 android:id="@+id/authorTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/bevan"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/roboto"
                 android:text="@string/book_txt_author"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/nameTxt" />
 
@@ -102,8 +113,10 @@
                 android:id="@+id/txtAutorName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bevan"
+                android:fontFamily="@font/roboto"
                 android:text="@string/default_name"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="@+id/authorTxt"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/authorTxt" />
@@ -112,9 +125,11 @@
                 android:id="@+id/pagesText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/bevan"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/roboto"
                 android:text="@string/book_txt_pages"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/authorTxt" />
 
@@ -122,8 +137,10 @@
                 android:id="@+id/txtPages"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bevan"
+                android:fontFamily="@font/roboto"
                 android:text="@string/my_profile_default_number"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="@+id/pagesText"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/pagesText" />
@@ -132,22 +149,25 @@
                 android:id="@+id/descriptionTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/bevan"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/roboto"
                 android:text="@string/book_txt_gen"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/pagesText" />
 
             <TextView
                 android:id="@+id/txtDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="44dp"
-                android:fontFamily="@font/bevan"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/roboto"
                 android:text="@string/book_txt_short_description"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionTxt" />
 
@@ -183,8 +203,10 @@
                 android:id="@+id/txtEditGen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bevan"
+                android:fontFamily="@font/roboto"
                 android:text="@string/default_gen"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="@+id/descriptionTxt"
                 app:layout_constraintStart_toStartOf="@+id/guideline4"
                 app:layout_constraintTop_toTopOf="@+id/descriptionTxt"
