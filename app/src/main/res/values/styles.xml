@@ -43,7 +43,7 @@
     <style name="SpinnerTheme">
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">@font/bevan</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

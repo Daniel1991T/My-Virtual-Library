@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-
     android:id="@+id/spinnerItem"
     style="?android:attr/spinnerDropDownItemStyle"
+
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@color/secondary"
+    android:backgroundTint="@color/secondary"
+    android:drawableEnd="@drawable/ic_search"
     android:ellipsize="marquee"
-    android:text="@string/add_book_gen"
-    android:textColor="@color/colorAccent"
-    android:textSize="15sp"
-    android:textStyle="normal"
     android:fontFamily="@font/bevan"
-    android:background="@color/selectColour"
-    android:theme="@style/SpinnerTheme">
+    android:text="@string/add_book_gen"
+    android:textColor="@color/colorPrimaryDark"
+    android:textSize="15sp"
+    android:textStyle="normal">
 
 </CheckedTextView>

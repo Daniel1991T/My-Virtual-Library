@@ -17,6 +17,7 @@
         <com.toptoche.searchablespinnerlibrary.SearchableSpinner
             android:id="@+id/allBookSpinner"
             android:layout_width="match_parent"
+            android:dropDownSelector="@color/colorPrimaryDark"
             android:layout_height="45dp"
             android:background="@color/colorPrimaryDark" />
     </LinearLayout>
