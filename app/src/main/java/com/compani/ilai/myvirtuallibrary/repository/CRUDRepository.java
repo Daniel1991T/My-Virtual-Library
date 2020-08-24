@@ -21,7 +21,7 @@ import static com.compani.ilai.myvirtuallibrary.repository.DatabaseHelper.COLUMN
 import static com.compani.ilai.myvirtuallibrary.repository.DatabaseHelper.COLUMN_BOOK_PAGES;
 
 
-public abstract class CRUDRepository<ID> {
+public abstract class CRUDRepository {
 
     private final SQLiteOpenHelper sqLiteOpenHelper;
     private final String table;
@@ -31,10 +31,10 @@ public abstract class CRUDRepository<ID> {
         this.table = table;
     }
 
-    public boolean remove(ID id) {
+    public boolean remove(int bookId) {
         SQLiteDatabase db = sqLiteOpenHelper.getWritableDatabase();
         String queryToDelete = "DELETE FROM " + table + " WHERE " + COLUMN_BOOK_ID
-                + " = " + id;
+                + " = " + bookId;
 
         Cursor cursor = db.rawQuery(queryToDelete, null);
 
@@ -42,7 +42,7 @@ public abstract class CRUDRepository<ID> {
         cursor.close();
         db.close();
 
-        return success;
+        return !success;
     }
 
     public ArrayList<Book> getBooksList () {

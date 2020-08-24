@@ -18,12 +18,9 @@ import com.compani.ilai.myvirtuallibrary.services.BookRecViewAdapter;
 import com.compani.ilai.myvirtuallibrary.MainActivity;
 import com.compani.ilai.myvirtuallibrary.R;
 import com.compani.ilai.myvirtuallibrary.repository.AllBookRepository;
-import com.compani.ilai.myvirtuallibrary.repository.DatabaseHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 
 public class AllBooksActivity extends AppCompatActivity {

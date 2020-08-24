@@ -122,8 +122,12 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
                     public void onClick(DialogInterface dialog, int which) {
                         boolean removedSuccessfully = crudRepository.remove(books.get(position).getId());
                         if (removedSuccessfully) {
-                            Toast.makeText(mContext, "Book Removed!", Toast.LENGTH_SHORT).show();
+                            books.remove(books.get(position));
                             notifyItemRemoved(position);
+                            Toast.makeText(mContext, "Book Removed!", Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(mContext, "Something wrong happened, please try again1", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -177,7 +181,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             books.clear();
-            books.addAll((ArrayList) results.values);
+            books.addAll((ArrayList<Book>) results.values);
             notifyDataSetChanged();
         }
     };
@@ -187,7 +191,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
         private CardView parent;
         private ImageView imgBook;
         private TextView txtName;
-        private ImageView downArrow, upArrow;
+        private ImageView downArrow,  upArrow;
         private RelativeLayout expandedRelLayout;
         private TextView txtAuthor, txtGen, txtBookDelete;
 

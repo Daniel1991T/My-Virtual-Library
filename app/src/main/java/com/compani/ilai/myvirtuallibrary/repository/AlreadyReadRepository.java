@@ -4,9 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.compani.ilai.myvirtuallibrary.services.Book;
-
-public class AlreadyReadRepository extends CRUDRepository<Integer> {
+public class AlreadyReadRepository extends CRUDRepository {
 
 
     public AlreadyReadRepository(@NonNull Context context) {
