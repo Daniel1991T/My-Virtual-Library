@@ -1,132 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyProfilActivity">
+    android:orientation="vertical"
+    tools:context=".view.profile.MyProfileActivity"
+    android:background="@color/colorPrimaryDark">
 
     <TextView
         android:id="@+id/mptxtLibraryName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/bevan"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/secondary"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="25sp"
         android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.14" />
-
     <TextView
-        android:id="@+id/mpTxtUsername"
-        android:layout_width="wrap_content"
+        android:id="@+id/my_profile_txtView"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_username"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
+        android:singleLine="false"
+        android:ellipsize="marquee"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/secondary"
+        android:textSize="18sp"
+        android:layout_margin="10dp"
+        android:text="@string/my_profile_hello"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mptxtLibraryName" />
 
-    <TextView
-        android:id="@+id/mpEditUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/login_username"
-        app:layout_constraintBottom_toBottomOf="@+id/mpTxtUsername"
-        app:layout_constraintStart_toEndOf="@+id/mpTxtUsername"
-        app:layout_constraintTop_toTopOf="@+id/mpTxtUsername" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/myProfile_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_profile_txtView" />
 
-    <TextView
-        android:id="@+id/mpTxtLibraryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_library_name"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/mpTxtUsername" />
-
-    <TextView
-        android:id="@+id/mpEditLibraryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/register_library_name"
-        app:layout_constraintBottom_toBottomOf="@+id/mpTxtLibraryName"
-        app:layout_constraintStart_toEndOf="@+id/mpTxtLibraryName"
-        app:layout_constraintTop_toTopOf="@+id/mpTxtLibraryName" />
-
-    <TextView
-        android:id="@+id/mptxtAllBooksNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_number_of_all_books"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/mpTxtLibraryName" />
-
-    <TextView
-        android:id="@+id/mpEditNumberBooks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_default_number"
-        app:layout_constraintBottom_toBottomOf="@+id/mptxtAllBooksNumber"
-        app:layout_constraintStart_toEndOf="@+id/mptxtAllBooksNumber"
-        app:layout_constraintTop_toTopOf="@+id/mptxtAllBooksNumber" />
-
-    <TextView
-        android:id="@+id/mpTxtReadBooks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_read_books"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/mptxtAllBooksNumber" />
-
-    <TextView
-        android:id="@+id/mpEditNumberReads"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_default_number"
-        app:layout_constraintBottom_toBottomOf="@+id/mpTxtReadBooks"
-        app:layout_constraintStart_toEndOf="@+id/mpTxtReadBooks"
-        app:layout_constraintTop_toTopOf="@+id/mpTxtReadBooks" />
-
-    <TextView
-        android:id="@+id/mpTxtFavoriteBooks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_favorite_books"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/mpTxtReadBooks" />
-
-    <TextView
-        android:id="@+id/mpEditNumberFavoriteBooks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bevan"
-        android:text="@string/my_profile_default_number"
-        app:layout_constraintBottom_toBottomOf="@+id/mpTxtFavoriteBooks"
-        app:layout_constraintStart_toEndOf="@+id/mpTxtFavoriteBooks"
-        app:layout_constraintTop_toTopOf="@+id/mpTxtFavoriteBooks" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -59,4 +59,11 @@
     <string name="add_book_btn">Add Book</string>
     <string name="app_description">App Description</string>
 
+    <string name="my_profile_hello"> \t Hello,</string>
+    <string name="my_profile_message1">I\'m your virtual library, I\'m glad you like books as much as I do, my name is</string>
+    <string name="my_profile_message2">and they contain a total of</string>
+    <string name="my_profile_message3">books, of which</string>
+    <string name="my_profile_message4">books read and</string>
+    <string name="my_profile_message5">favorite books, more below you can see all kinds of books in the library!
+        Have a nice day and a lot of fun reading!</string>
 </resources>

@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AboutActivity"
+            android:label="@string/btn_about"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".view.book.AlreadyReadActivity" />
         <activity android:name=".view.book.FavoriteActivity" />

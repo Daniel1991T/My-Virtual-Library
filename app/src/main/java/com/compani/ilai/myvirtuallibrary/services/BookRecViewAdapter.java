@@ -186,6 +186,7 @@ public class BookRecViewAdapter extends RecyclerView.Adapter<BookRecViewAdapter.
         }
     };
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private CardView parent;
